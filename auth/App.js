@@ -18,7 +18,7 @@ class App extends Component {
     });
 
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
+      console.log(this.state);
       if (user) {
         this.setState({ loggedIn: true });
       } else {
@@ -30,11 +30,21 @@ class App extends Component {
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
-        return <Button>Log Out</Button>;
+        return (
+          <View style={{ flexDirection: 'row', paddingTop: 10 }}>
+            <Button onPress={() => firebase.auth().signOut()}>
+              Log Out
+            </Button>
+          </View>
+        );
       case false:
         return <LoginForm />;
       default:
-        return <Spinner size="large" />;
+        return ( 
+          <View style={{ flexDirection: 'row', paddingTop: 10 }}>
+            <Spinner size="large" />
+          </View>
+        );
     }
   }
 
@@ -42,7 +52,7 @@ class App extends Component {
     return (
       <View>
         <Header headerText="Authentication" />
-        <LoginForm />
+        {this.renderContent()}
       </View>
     );
   }
