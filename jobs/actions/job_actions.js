@@ -26,4 +26,11 @@ export const fetchJobs = (region, callback) => async (dispatch) => {
     } catch (e) {
       console.log(e);
     }
+};
+
+export const likeJob = (job) => {
+  return {
+    payload: job,
+    type: LIKE_JOB
   };
+};
