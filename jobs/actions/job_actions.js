@@ -34,3 +34,9 @@ export const likeJob = (job) => {
     type: LIKE_JOB
   };
 };
+
+export const clearLikedJobs = () => {
+  return {
+    type: CLEAR_LIKED_JOBS
+  };
+};

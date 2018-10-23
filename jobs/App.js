@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
-
+import { Icon } from 'react-native-elements';
 import store from './store';
 import AuthScreen from './screens/AuthScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -25,7 +25,19 @@ export default class App extends React.Component {
             screen: createStackNavigator({
               review: {screen: ReviewScreen },
               settings: { screen: SettingsScreen }
-            })
+            }),
+            navigationOptions:{
+              title: 'Review',
+              tabBarLabel: 'Review',
+              tabBarIcon: ({ tintColor }) => (
+                <Icon name="favorite" size={25} color={tintColor} />
+              )            
+            }
+          }
+        }, {
+          tabBarPosition: 'bottom',
+          tabBarOptions: {
+            labelStyle: {fontSize: 12 }
           }
         })
       }
@@ -38,9 +50,7 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <View style={styles.container}>
           <MainNavigator />
-        </View>
       </Provider>
     );
   }
