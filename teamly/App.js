@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import store from './store';
 import TeamScreen from './screens/TeamScreen';
 import TeamMember from './screens/TeamMember';
 import ProjectList from './screens/ProjectList';
@@ -20,7 +21,7 @@ export default class App extends React.Component {
     }
     );
     return (
-      <Provider>
+      <Provider store={store}>
         <MainNavigator />
       </Provider>
     );
