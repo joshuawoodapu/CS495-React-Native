@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import TeamReducer from './TeamReducer';
-import ProjectReducer from './ProjectReducer';
+import ProjectsReducer from './ProjectsReducer';
 import MemberReducer from './MemberReducer';
+import ProjectReducer from './ProjectReducer';
+import TaskReducer from './TaskReducer';
 
 export default combineReducers({
     team: TeamReducer,
     member: MemberReducer,
-    projects: ProjectReducer
+    projects: ProjectsReducer,
+    project: ProjectReducer,
+    task: TaskReducer
 });

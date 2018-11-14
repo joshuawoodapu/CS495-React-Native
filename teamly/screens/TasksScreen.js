@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { ScrollView } from 'react-native';
+import { ListItem } from 'react-native-elements';
+import * as actions from '../actions';
 
 class TasksScreen extends Component {
+    static navigationOptions = {
+        title: 'Tasks',
+    };
+    // This handles what happens when a single member is tapped
+    onTaskPress(task) {
+        // Dispatch an action to change the currently selected member in state
+        this.props.taskChanged(task);
+
+        // Navigate to the member page
+        this.props.navigation.navigate('Task');
+    }
+
+    renderTasks() {
+        return this.props.project.tasks.map((item) =>         
+            <ListItem
+                key={item.name}
+                title={item.name}
+                onPress={() => this.onTaskPress(item)}
+            />
+        );
+    }
+
     render() {
         return (
-            // Going to put a temp button in, so we can move it move it
-            <View>
-                <Text>TaskScreen</Text>
-                <Button
-                    title="Task"
-                    raised
-                    buttonStyle={styles.buttonStyle}
-                    onPress={() => this.props.navigation.navigate('Task')}
-                />
-            </View>
+            // The members from state are rendered into a scroll view
+            <ScrollView>
+                {this.renderTasks()}
+            </ScrollView>
         );
     }
 }
@@ -25,5 +43,8 @@ const styles = {
     }
 };
 
+const mapStateToProps = state => {
+    return { project: state.project };
+}
 
-export default TasksScreen;
+export default connect(mapStateToProps, actions)(TasksScreen);

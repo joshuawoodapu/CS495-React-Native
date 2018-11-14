@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
+import * as actions from '../actions';
 
-class TaskDetail extends Component {
+class TeamMember extends Component {
+    static navigationOptions = {
+        title: 'Task Details',
+      };
+
     render() {
+        const { name, desc } = this.props.task;
+
         return (
             <View>
-                <Text>TaskDetail</Text>
-                <Text>TaskDetail</Text>
-                <Text>TaskDetail</Text>
-                <Text>TaskDetail</Text>
+                <Text>{name}</Text>
+                <Text>{desc}</Text>
             </View>
         );
     }
 }
 
-export default TaskDetail;
+const mapStateToProps = state => {
+    return { task: state.task };
+}
+
+export default connect(mapStateToProps, actions)(TeamMember);

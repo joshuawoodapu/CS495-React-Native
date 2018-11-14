@@ -1,15 +1,15 @@
 import {
-    PROJECT_CHANGED,
-    PROJECT_CLEAR
+    TASK_CHANGED,
+    TASK_CLEAR
 } from '../actions/types';
 
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case PROJECT_CHANGED:
+        case TASK_CHANGED:
             return action.payload;
-        case PROJECT_CLEAR:
+        case TASK_CLEAR:
             return INITIAL_STATE;    
         default:
             return state;

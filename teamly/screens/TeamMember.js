@@ -5,19 +5,17 @@ import * as actions from '../actions';
 
 class TeamMember extends Component {
     static navigationOptions = {
-        title: this.props.member.name,
+        title: 'Team Member',
       };
 
     render() {
-        const { name } = this.props.member;
-        console.log(name);
-        console.log(this.props.member);
+        const { name, initials, subtitle } = this.props.member;
 
         return (
             <View>
                 <Text>{name}</Text>
-                <Text>{name}</Text>
-                <Text>{name}</Text>
+                <Text>{initials}</Text>
+                <Text>{subtitle}</Text>
             </View>
         );
     }
