@@ -1,0 +1,37 @@
+[
+    {"id": 0,
+    "name": "Oliver Seery",
+    "initials": "OS",
+    "subtitle": "Inspiration Lead"
+    },
+    {"id": 1,
+    "name": "Sabrina Seery",
+    "initials": "SS",
+    "subtitle": "Oliver Lead"
+    },
+    {"id": 2,
+    "name": "Campbell Ong",
+    "initials": "CO",
+    "subtitle": "Document Lead"
+    },
+    {"id": 3,
+    "name": "Mattaniah Aytenfsu",
+    "initials": "MA",
+    "subtitle": "Graphic Design Lead"
+    },
+    {"id": 4,
+    "name": "Josh Wood",
+    "initials": "JW",
+    "subtitle": "Team Lead"
+    },
+    {"id": 5,
+    "name": "Rachel Jacoby",
+    "initials": "RJ",
+    "subtitle": "Emotional Support Lead"
+    },
+    {"id": 6,
+    "name": "Elyse Shackleton",
+    "initials": "ES",
+    "subtitle": "Presentation Lead"
+    }
+]

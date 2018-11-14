@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { ScrollView } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Avatar } from 'react-native-elements';
+import * as actions from '../actions';
 import MemberListItem from '../components/MemberListItem';
-
 
 // Hard coded list for team members, to be removed once creation works
 const demoList = [
@@ -46,22 +47,37 @@ const demoList = [
 ]
 
 class TeamScreen extends Component {
+    static navigationOptions = {
+        title: 'Team',
+      };
+    // This handles what happens when a single member is tapped
+    onMemberPress(member) {
+        // Dispatch an action to change the currently selected member in state
+        //console.log(member);
+        this.props.memberChanged(member);
+
+        // Navigate to the member page
+        this.props.navigation.navigate('Member')
+    }
+
     renderMembers() {
-        return demoList.map((item) =>         
+        return this.props.team.map((item) =>         
             <ListItem
-                roundAvatar
-                avatar={{title: item.initials}}
+                avatar={<Avatar 
+                            rounded
+                            title={item.initials}
+                        />}
                 key={item.name}
                 title={item.name}
                 subtitle={item.subtitle}
-                onPress={() => this.props.navigation.navigate('Member')}
+                onPress={() => this.onMemberPress(item)}
             />
         );
     }
 
     render() {
         return (
-            // Going to put a temp button in, so we can move it move it
+            // The members from state are rendered into a scroll view
             <ScrollView>
                 {this.renderMembers()}
             </ScrollView>
@@ -75,5 +91,8 @@ const styles = {
     }
 };
 
+const mapStateToProps = state => {
+    return { team: state.team };
+}
 
-export default TeamScreen;
+export default connect(mapStateToProps, actions)(TeamScreen);
