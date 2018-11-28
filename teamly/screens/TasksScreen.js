@@ -16,8 +16,13 @@ class TasksScreen extends Component {
         // Navigate to the member page
         this.props.navigation.navigate('Task');
     }
+    onAddTaskPress() {
+        // Navigate to the create task page
+        this.props.navigation.navigate('CreateT');
+    }
 
     renderTasks() {
+        console.log(this.props.project.tasks);
         return this.props.project.tasks.map((item) =>         
             <ListItem
                 key={item.name}
@@ -29,9 +34,14 @@ class TasksScreen extends Component {
 
     render() {
         return (
-            // The members from state are rendered into a scroll view
+            // The tasks from state are rendered into a scroll view and an "add new" is rendered below
             <ScrollView>
                 {this.renderTasks()}
+                <ListItem 
+                    title={'Add New Task'}
+                    rightIcon={{name: 'add'}}
+                    onPress={() => this.onAddTaskPress()}
+                />
             </ScrollView>
         );
     }

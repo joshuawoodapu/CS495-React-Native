@@ -37,6 +37,11 @@ class TeamScreen extends Component {
             // The members from state are rendered into a scroll view
             <ScrollView>
                 {this.renderMembers()}
+                <ListItem 
+                    title={'Add New Team Member'}
+                    rightIcon={{name: 'add'}}
+                    onPress={() => this.onAddMemberPress()}
+                />
             </ScrollView>
         );
     }

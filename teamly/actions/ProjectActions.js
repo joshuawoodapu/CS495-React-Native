@@ -1,6 +1,8 @@
 import {
     PROJECT_CHANGED,
-    PROJECT_CLEAR
+    PROJECT_CLEAR,
+    ADD_TASK,
+    UPDATE_PROJECTS
 } from './types';
 
 export const projectChanged = (project) => {
@@ -14,5 +16,22 @@ export const projectChanged = (project) => {
 export const projectClear = () => {
     return {
         type: PROJECT_CLEAR
-    }
+    };
+};
+
+export const addTask = (name, desc, pId, title) => {
+    console.log(name)
+    return {
+        type: ADD_TASK,
+        payload: {name:name, desc:desc, pId:pId, title:title}
+    };
+};
+
+export const updateProjectsWithTask = (project) => {
+    console.log("This is from the updateProjectsWithTask:")
+    console.log(project)
+    return {
+        type: UPDATE_PROJECTS,
+        payload: project
+    };
 };

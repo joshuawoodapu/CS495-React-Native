@@ -1,6 +1,7 @@
 import {
     PROJECT_CHANGED,
-    PROJECT_CLEAR
+    PROJECT_CLEAR,
+    ADD_TASK
 } from '../actions/types';
 
 const INITIAL_STATE = {};
@@ -10,7 +11,9 @@ export default (state = INITIAL_STATE, action) => {
         case PROJECT_CHANGED:
             return action.payload;
         case PROJECT_CLEAR:
-            return INITIAL_STATE;    
+            return INITIAL_STATE;
+        case ADD_TASK:
+            return {...state, tasks: [...state.tasks, {desc: action.payload.desc, name: action.payload.name}]};
         default:
             return state;
     }

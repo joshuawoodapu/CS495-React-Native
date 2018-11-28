@@ -2,12 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
-import store from './store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { store, persistor } from './store';
 import TeamScreen from './screens/TeamScreen';
 import TeamMember from './screens/TeamMember';
 import ProjectList from './screens/ProjectList';
 import TasksScreen from './screens/TasksScreen';
 import TaskDetail from './screens/TaskDetail';
+import LoadingView from './screens/LoadingView';
+import CreateTask from './screens/CreateTask';
 
 export default class App extends React.Component {
   render() {
@@ -22,7 +25,9 @@ export default class App extends React.Component {
     );
     return (
       <Provider store={store}>
-        <MainNavigator />
+        <PersistGate loading={<LoadingView />} persistor={persistor}>
+          <MainNavigator />
+        </PersistGate>
       </Provider>
     );
   }
@@ -38,6 +43,7 @@ const TeamsStack = createStackNavigator({
 const ProjectsStack = createStackNavigator({
   Project: ProjectList,
   Tasks: TasksScreen,
+  CreateT: CreateTask,
   Task: TaskDetail,
 });
 
