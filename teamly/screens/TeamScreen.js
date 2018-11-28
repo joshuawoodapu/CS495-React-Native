@@ -16,6 +16,10 @@ class TeamScreen extends Component {
         // Navigate to the member page
         this.props.navigation.navigate('Member');
     }
+    onAddMemberPress() {
+        // Navigate to the create task page
+        this.props.navigation.navigate('CreateM');
+    }
 
     renderMembers() {
         return this.props.team.map((item) =>         

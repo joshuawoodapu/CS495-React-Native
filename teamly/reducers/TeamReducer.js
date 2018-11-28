@@ -8,7 +8,8 @@ const INITIAL_STATE = data;
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case MEMBER_ADD:
-            return {...state }    
+            const newId = state[state.length - 1].id + 1
+            return [...state, {id:newId, name:action.payload.name, initials:action.payload.initials, subtitle:action.payload.subtitle}];
         default:
             return state;
     }

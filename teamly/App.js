@@ -11,6 +11,7 @@ import TasksScreen from './screens/TasksScreen';
 import TaskDetail from './screens/TaskDetail';
 import LoadingView from './screens/LoadingView';
 import CreateTask from './screens/CreateTask';
+import CreateMember from './screens/CreateMember';
 
 export default class App extends React.Component {
   render() {
@@ -36,6 +37,7 @@ export default class App extends React.Component {
 // The stack for a team 
 const TeamsStack = createStackNavigator({
   Team: TeamScreen,
+  CreateM: CreateMember, 
   Member: TeamMember,
 });
 
