@@ -19,10 +19,11 @@ class CreateMember extends Component {
             this.props.navigation.navigate('Team');
         }
         else {
-            // If the user left one empty they both shake, for a good time
+            // If the user left one empty they both shake and the phone vibrates, for a good time
             Vibration.vibrate(100)
             this.nameInput.shake();
-            this.descInput.shake();
+            this.initialsInput.shake();
+            this.subtitleInput.shake();
         }
     }
 
