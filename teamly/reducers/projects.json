@@ -3,18 +3,18 @@
         "id":0,
         "title": "Sprint 1",
         "tasks": [
-            { "name": "Task 1", "desc":"This is task number 1"},
-            { "name": "Task 2", "desc":"This is task number 2"},
-            { "name": "Task 3", "desc":"This is task number 3"}
+            { "name": "Task 1", "desc":"This is task number 1", "assigned":0, "done":false},
+            { "name": "Task 2", "desc":"This is task number 2", "assigned":0, "done":false},
+            { "name": "Task 3", "desc":"This is task number 3", "assigned":0, "done":false}
         ]
     },
     {
         "id":1,
         "title": "Sprint 2",
         "tasks": [
-            { "name": "Task 1", "desc":"This is task number 1"},
-            { "name": "Task 2", "desc":"This is task number 2"},
-            { "name": "Task 3", "desc":"This is task number 3"}
+            { "name": "Task 1", "desc":"This is task number 1", "assigned":0, "done":false},
+            { "name": "Task 2", "desc":"This is task number 2", "assigned":0, "done":false},
+            { "name": "Task 3", "desc":"This is task number 3", "assigned":0, "done":false}
         ]
     }
 ]

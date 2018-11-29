@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { Vibration } from 'react-native';
-import { Text, View } from 'react-native';
+import { Vibration, View, Picker } from 'react-native';
 import * as actions from '../actions';
 
 class CreateMember extends Component {
-    state = { name: '', desc: '' };
+    state = { name: '', desc: '', assigned: '' };
 
     static navigationOptions = {
         title: 'Create New Task',
@@ -16,8 +15,8 @@ class CreateMember extends Component {
         if (this.state.name !== '' && this.state.desc !== '') {
             // The user put stuff in, so we move forward
             const oldProject = this.props.project;
-            this.props.addTask(this.state.name, this.state.desc, this.props.project.id, this.props.project.title);
-            const newProject = {...oldProject, tasks: [...oldProject.tasks, {desc: this.state.desc, name: this.state.name}]};
+            this.props.addTask(this.state.name, this.state.desc, this.state.assigned);
+            const newProject = {...oldProject, tasks: [...oldProject.tasks, {desc: this.state.desc, name: this.state.name, assigned: this.state.assigned, done: false}]};
             this.props.updateProjectsWithTask(newProject);
             this.props.navigation.navigate('Tasks');
         }
@@ -27,6 +26,12 @@ class CreateMember extends Component {
             this.nameInput.shake();
             this.descInput.shake();
         }
+    }
+
+    renderTeamPickers() {
+        return this.props.team.map((item) =>         
+            <Picker.Item label={item.name} value={item.id} key={item.id} />
+        );
     }
 
     render() {
@@ -44,6 +49,13 @@ class CreateMember extends Component {
                     value={this.state.desc} 
                     onChangeText={desc => this.setState({ desc })}
                 />
+                <Picker
+                    selectedValue={this.state.assigned}
+                    style={{ height: 50, width: 600, justifyContent: 'center' }}
+                    onValueChange={( itemValue, itemIndex) =>  this.setState({assigned: itemValue})}
+                >
+                    {this.renderTeamPickers()}
+                </Picker>
                 <Button 
                     raised
                     icon={{name: 'add'}}
@@ -56,7 +68,7 @@ class CreateMember extends Component {
 }
 
 const mapStateToProps = state => {
-    return { project: state.project };
+    return { project: state.project, team: state.team };
 }
 
 export default connect(mapStateToProps, actions)(CreateMember);

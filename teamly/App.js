@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
+import { Icon } from 'react-native-elements';
 import { store, persistor } from './store';
 import TeamScreen from './screens/TeamScreen';
 import TeamMember from './screens/TeamMember';
@@ -21,9 +22,25 @@ export default class App extends React.Component {
       Projects: ProjectsStack,
     },
     {
-      
+      defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ tintColor }) => {
+          const { routeName } = navigation.state;
+          let iconName;
+          if (routeName === 'Teams') {
+            iconName = `team`;
+          } else if (routeName === 'Projects') {
+            iconName = `book`;
+          }
+  
+          return <Icon name={iconName} color={tintColor} />;
+        },
+      }),
+      tabBarOptions: {
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      },
     }
-    );
+  );
     return (
       <Provider store={store}>
         <PersistGate loading={<LoadingView />} persistor={persistor}>

@@ -19,11 +19,11 @@ export const projectClear = () => {
     };
 };
 
-export const addTask = (name, desc, pId, title) => {
+export const addTask = (name, desc, assigned) => {
     console.log(name)
     return {
         type: ADD_TASK,
-        payload: {name:name, desc:desc, pId:pId, title:title}
+        payload: {name:name, desc:desc, assigned:assigned}
     };
 };
 

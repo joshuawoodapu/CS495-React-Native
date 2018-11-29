@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
         case PROJECT_CLEAR:
             return INITIAL_STATE;
         case ADD_TASK:
-            return {...state, tasks: [...state.tasks, {desc: action.payload.desc, name: action.payload.name}]};
+            return {...state, tasks: [...state.tasks, {desc: action.payload.desc, name: action.payload.name, assigned: action.payload.assigned, done: false}]};
         default:
             return state;
     }
