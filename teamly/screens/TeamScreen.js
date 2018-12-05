@@ -32,6 +32,7 @@ class TeamScreen extends Component {
                 title={item.name}
                 subtitle={item.subtitle}
                 onPress={() => this.onMemberPress(item)}
+                containerStyle= {{ backgroundColor: 'white'}}
             />
         );
     }
@@ -45,6 +46,7 @@ class TeamScreen extends Component {
                     title={'Add New Team Member'}
                     rightIcon={{name: 'add'}}
                     onPress={() => this.onAddMemberPress()}
+                    containerStyle= {{ backgroundColor: 'white'}}
                 />
             </ScrollView>
         );

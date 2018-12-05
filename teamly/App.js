@@ -18,10 +18,32 @@ export default class App extends React.Component {
   render() {
     const MainNavigator = createBottomTabNavigator(
     {
-      Teams: TeamsStack,
-      Projects: ProjectsStack,
+      Teams: {
+        screen: TeamsStack,
+        navigationOptions: {
+          tabBarLabel:'Team',
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name='people' size={30} color={tintColor} />
+          )
+        }
+      },
+      Projects: { 
+        screen: ProjectsStack,
+        navigationOptions: {
+          tabBarLabel:'Projects',
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name='receipt' size={30} color={tintColor} />
+          )
+        }
+      }
     },
     {
+      tabBarOptions: {
+        showIcon: true,
+        showLabel: true,
+        activeTintColor: 'firebrick',
+        inactiveTintColor: 'gray',
+      },
     }
   );
     return (

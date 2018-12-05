@@ -9,15 +9,22 @@ class TeamMember extends Component {
         title: 'Team Member',
       };
 
+
+
+    // Might get to rendering the tasks assigned to a person
+    renderTasks() {
+
+    };
+
     render() {
         const { name, initials, subtitle } = this.props.member;
 
         return (
             <View>
                 <Card>
-                    <Text>{name}</Text>
-                    <Text>{initials}</Text>
-                    <Text>{subtitle}</Text>
+                    <Text>Name: {name}</Text>
+                    <Text>Initials: {initials}</Text>
+                    <Text>Title: {subtitle}</Text>
                 </Card>
             </View>
         );
@@ -25,7 +32,7 @@ class TeamMember extends Component {
 }
 
 const mapStateToProps = state => {
-    return { member: state.member };
+    return { member: state.member, projects: state.projects };
 }
 
 export default connect(mapStateToProps, actions)(TeamMember);

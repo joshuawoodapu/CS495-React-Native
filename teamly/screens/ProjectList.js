@@ -24,6 +24,7 @@ class ProjectList extends Component {
                 key={item.id}
                 title={item.title}
                 onPress={() => this.onProjectPress(item)}
+                containerStyle= {{ backgroundColor: 'white'}}
             />
         );
     }

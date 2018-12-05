@@ -28,6 +28,7 @@ class TasksScreen extends Component {
                 key={item.name}
                 title={item.name}
                 onPress={() => this.onTaskPress(item)}
+                containerStyle={{ backgroundColor: `${item.done ?  'palegreen' : '#FFF'  }` }}
             />
         );
     }
@@ -41,6 +42,7 @@ class TasksScreen extends Component {
                     title={'Add New Task'}
                     rightIcon={{name: 'add'}}
                     onPress={() => this.onAddTaskPress()}
+                    containerStyle= {{ backgroundColor: 'white'}}
                 />
             </ScrollView>
         );

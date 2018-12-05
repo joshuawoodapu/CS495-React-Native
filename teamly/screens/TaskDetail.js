@@ -11,14 +11,20 @@ class TaskDetail extends Component {
         title: 'Task Details',
       };
 
-    onDoneToggle() {
-        console.log(this.state.done);
-        const newStatus = !this.state.done;
-        this.props.taskStatusChanged(newStatus);
-        const newTask = {...this.props.task, done: this.state.done};
-        this.props.updateProjectWithTask(newTask);
-        this.setState({ done: newStatus });
-        //this.props.updateProjectsWithTask(this.props.project);
+    onDoneToggle = async () => {
+        try {
+            console.log(this.state.done);
+            const newStatus = !(this.state.done);
+            await this.props.taskStatusChanged(newStatus);
+            const newTask = {...this.props.task, done: newStatus};
+            await this.props.updateProjectWithTask(newTask);
+            await this.props.updateProjectsWithTask(this.props.project);
+            this.setState({ done: newStatus });
+        }
+        catch (err) {
+            console.log(err);
+        }
+
     };
 
     getAssignedName() {
