@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
+import { Card } from 'react-native-elements';
 import * as actions from '../actions';
 
 class TeamMember extends Component {
@@ -13,9 +14,11 @@ class TeamMember extends Component {
 
         return (
             <View>
-                <Text>{name}</Text>
-                <Text>{initials}</Text>
-                <Text>{subtitle}</Text>
+                <Card>
+                    <Text>{name}</Text>
+                    <Text>{initials}</Text>
+                    <Text>{subtitle}</Text>
+                </Card>
             </View>
         );
     }

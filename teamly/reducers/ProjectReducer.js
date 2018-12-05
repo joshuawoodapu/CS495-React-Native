@@ -1,7 +1,8 @@
 import {
     PROJECT_CHANGED,
     PROJECT_CLEAR,
-    ADD_TASK
+    ADD_TASK,
+    UPDATE_PROJECT
 } from '../actions/types';
 
 const INITIAL_STATE = {};
@@ -14,6 +15,13 @@ export default (state = INITIAL_STATE, action) => {
             return INITIAL_STATE;
         case ADD_TASK:
             return {...state, tasks: [...state.tasks, {desc: action.payload.desc, name: action.payload.name, assigned: action.payload.assigned, done: false}]};
+        case UPDATE_PROJECT:
+            const newP = {...state, tasks: []};
+            for (const i = 0; i < state.tasks.length; i++) {
+                if (state.tasks[i].name !== action.payload.name)
+                    newP.tasks.push(state.tasks[i]);
+            }
+            return {...newP, tasks: [...newP.tasks, action.payload] }      
         default:
             return state;
     }

@@ -5,5 +5,7 @@ export const PROJECT_CHANGED = 'project_changed';
 export const PROJECT_CLEAR = 'project_clear';
 export const TASK_CHANGED = 'task_changed';
 export const TASK_CLEAR = 'task_clear';
+export const TASK_STATUS = 'task_status';
 export const ADD_TASK = 'add_task';
+export const UPDATE_PROJECT = 'update_project';
 export const UPDATE_PROJECTS = 'update_projects';

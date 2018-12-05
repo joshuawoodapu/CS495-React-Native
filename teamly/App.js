@@ -22,23 +22,6 @@ export default class App extends React.Component {
       Projects: ProjectsStack,
     },
     {
-      defaultNavigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({ tintColor }) => {
-          const { routeName } = navigation.state;
-          let iconName;
-          if (routeName === 'Teams') {
-            iconName = `team`;
-          } else if (routeName === 'Projects') {
-            iconName = `book`;
-          }
-  
-          return <Icon name={iconName} color={tintColor} />;
-        },
-      }),
-      tabBarOptions: {
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      },
     }
   );
     return (

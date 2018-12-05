@@ -5,19 +5,32 @@ import { Card } from 'react-native-elements';
 import * as actions from '../actions';
 
 class TaskDetail extends Component {
-    state = { done: false };
+    state = { done: this.props.task.done };
 
     static navigationOptions = {
         title: 'Task Details',
       };
 
     onDoneToggle() {
-        console.log(this.props.task.done);
-        this.setState({ done: !this.state.done });
+        console.log(this.state.done);
+        const newStatus = !this.state.done;
+        this.props.taskStatusChanged(newStatus);
+        const newTask = {...this.props.task, done: this.state.done};
+        this.props.updateProjectWithTask(newTask);
+        this.setState({ done: newStatus });
+        //this.props.updateProjectsWithTask(this.props.project);
+    };
+
+    getAssignedName() {
+        const assignedId = this.props.task.assigned;
+        for (const i = 0; i < this.props.team.length; i++ )
+            if (assignedId === this.props.team[i].id)
+                return this.props.team[i].name;
+        return "No one";
     };
 
     render() {
-        const { name, desc, assigned } = this.props.task;
+        const { name, desc } = this.props.task;
 
         return (
             <View>
@@ -25,12 +38,12 @@ class TaskDetail extends Component {
                     <View>
                         <Text>{name}</Text>
                         <Text>{desc}</Text>
-                        <Text>{assigned}</Text>
+                        <Text>Assigned To: {this.getAssignedName()}</Text>
                     </View>
                 </Card>
                 <Card>
                     <View>
-                        <Text>Done?</Text>
+                        <Text>Task Completion: {this.state.done}</Text>
                         <Switch 
                             onValueChange = {() => this.onDoneToggle()}
                             value={this.state.done}
@@ -43,7 +56,7 @@ class TaskDetail extends Component {
 }
 
 const mapStateToProps = state => {
-    return { task: state.task, team: state.team };
+    return { task: state.task, team: state.team, project: state.project };
 }
 
 export default connect(mapStateToProps, actions)(TaskDetail);
