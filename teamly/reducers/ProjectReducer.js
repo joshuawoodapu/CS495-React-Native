@@ -2,7 +2,8 @@ import {
     PROJECT_CHANGED,
     PROJECT_CLEAR,
     ADD_TASK,
-    UPDATE_PROJECT
+    UPDATE_PROJECT,
+    PROJECT_NEW_TASKS
 } from '../actions/types';
 
 const INITIAL_STATE = {};
@@ -21,7 +22,9 @@ export default (state = INITIAL_STATE, action) => {
                 if (state.tasks[i].name !== action.payload.name)
                     newP.tasks.push(state.tasks[i]);
             }
-            return {...newP, tasks: [...newP.tasks, action.payload] }      
+            return {...newP, tasks: [...newP.tasks, action.payload] }
+        case PROJECT_NEW_TASKS:
+            return {...state, tasks: [...action.payload]};
         default:
             return state;
     }

@@ -32,7 +32,7 @@ export default class App extends React.Component {
         navigationOptions: {
           tabBarLabel:'Projects',
           tabBarIcon: ({ tintColor }) => (
-            <Icon name='receipt' size={30} color={tintColor} />
+            <Icon name='work' size={30} color={tintColor} />
           )
         }
       }

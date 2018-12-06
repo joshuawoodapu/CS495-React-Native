@@ -1,6 +1,7 @@
 import {
     PROJECT_CHANGED,
     PROJECT_CLEAR,
+    PROJECT_NEW_TASKS,
     ADD_TASK,
     UPDATE_PROJECTS,
     UPDATE_PROJECT
@@ -45,3 +46,10 @@ export const updateProjectsWithTask = (project) => {
         payload: project
     };
 };
+
+export const projectNewTasks = (newTasks) => {
+    return {
+        type: PROJECT_NEW_TASKS,
+        payload: newTasks
+    }
+}
