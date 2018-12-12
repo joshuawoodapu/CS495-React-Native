@@ -35,24 +35,31 @@ class CreateMember extends Component {
                     ref={nameInput => this.nameInput = nameInput}
                     value={this.state.name} 
                     onChangeText={name => this.setState({ name })}
+                    placeholder='Please enter the member name'
+                    inputStyle={{ color: "black"}}
                 />
                 <FormLabel>Initials</FormLabel>
                 <FormInput 
                     ref={initialsInput => this.initialsInput = initialsInput}
                     value={this.state.initials} 
                     onChangeText={initials => this.setState({ initials })}
+                    placeholder='Please enter the members initials'
+                    inputStyle={{ color: "black"}}
                 />
                 <FormLabel>Subtitle</FormLabel>
                 <FormInput 
                     ref={subtitleInput => this.subtitleInput = subtitleInput}
                     value={this.state.subtitle} 
                     onChangeText={subtitle => this.setState({ subtitle })}
+                    placeholder='Please enter the members title'
+                    inputStyle={{ color: "black"}}
                 />
                 <Button 
                     raised
                     icon={{name: 'add'}}
                     title='Add'
                     onPress={this.onButtonPress.bind(this)}
+                    buttonStyle={{backgroundColor: "limegreen"}}
                 />
             </View>
         );

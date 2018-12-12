@@ -40,7 +40,7 @@ class TasksScreen extends Component {
         const numMems = this.props.team.length;
         newId = 0;
         // A new array to contain the user ids that have already been used, so someone doesn't get double assigned
-        const usedMems = [];
+        let usedMems = [];
         // Now we will loop over the tasks and randomly assign a team mem
         for (const i=0; i<this.props.project.tasks.length; i++)
             {
@@ -51,6 +51,8 @@ class TasksScreen extends Component {
                     {
                         notUnique = false
                         usedMems.push(newId);
+                        if (usedMems.length === numMems)
+                            usedMems = [];
                     }
                 }
                 newTasks.push({...this.props.project.tasks[i], assigned: newId });

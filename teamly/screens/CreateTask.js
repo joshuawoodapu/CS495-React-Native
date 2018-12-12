@@ -42,25 +42,34 @@ class CreateMember extends Component {
                     ref={nameInput => this.nameInput = nameInput}
                     value={this.state.name} 
                     onChangeText={name => this.setState({ name })}
+                    placeholder='Please enter a task name'
+                    inputStyle={{ color: "black"}}
                 />
                 <FormLabel>Task Description</FormLabel>
                 <FormInput 
                     ref={descInput => this.descInput = descInput}
                     value={this.state.desc} 
                     onChangeText={desc => this.setState({ desc })}
+                    placeholder='Please describe the task'
+                    inputStyle={{ color: "black"}}
                 />
-                <Picker
-                    selectedValue={this.state.assigned}
-                    style={{ height: 50, width: 600, justifyContent: 'center' }}
-                    onValueChange={( itemValue, itemIndex) =>  this.setState({assigned: itemValue})}
-                >
-                    {this.renderTeamPickers()}
-                </Picker>
+                <FormLabel>Task Assignee</FormLabel>
+                <View style={{ justifyContent: 'center', paddingLeft: 12 }}>
+                    <Picker
+                        selectedValue={this.state.assigned}
+                        style={{ height: 50, width: 600, justifyContent: 'center' }}
+                        itemStyle={{height: 44, color: "grey"}}
+                        onValueChange={( itemValue, itemIndex) =>  this.setState({assigned: itemValue})}
+                    >
+                        {this.renderTeamPickers()}
+                    </Picker>
+                </View>
                 <Button 
                     raised
                     icon={{name: 'add'}}
                     title='Add'
                     onPress={this.onButtonPress.bind(this)}
+                    buttonStyle={{backgroundColor: "limegreen"}}
                 />
             </View>
         );
